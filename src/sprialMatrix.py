@@ -1,42 +1,32 @@
 def spiralMatrix(siz):
-    res = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]]
+    res = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]]
+    ap = []
+    if len(res) == 0: return res
 
-    if siz == 0: return res
+    top, bottom = 0, len(res)
+    left, right = 0, len(res[0])
 
-    rowBegin, colBegin = 0, 0
-    rowEnd, colEnd = len(res)-1, len(res[0])-1
-    num = 0
+    while top <= bottom and left <= right:
+        for i in range(left, right):
+            ap.append(res[top][i])
+        top += 1
 
-    while rowBegin <= rowEnd and colBegin <= colEnd:
-        
-        for a in range(colBegin, colEnd+1):
-            num += 1
-            res[rowBegin][a] = num
-        rowBegin += 1
-        num += 1
-        # loop the last end columns
-        for a in range(rowBegin, rowEnd+1):
-            num += 1
-            res[a][colEnd] = num
-        colEnd -= 1
-        num += 1
+        for i in range(top, bottom):
+            ap.append(res[i][right - 1])
+        right -= 1
 
-        if rowBegin <= rowEnd:
-            for i in range(colEnd, colBegin - 1, -1):
-                num += 1
-                res[rowEnd][i] = num
-                
-        rowEnd -= 1
-        num += 1
-     
-        if colBegin <= colEnd:
-            for i in range(rowBegin, rowEnd - 1, -1):
-                num += 1
-                res[i][colBegin] = num
-        colBegin += 1
-        num += 1
+        if not (top < bottom and left < right):
+            break
 
-    print(res)
+        for i in range(right - 1, left - 1, -1):
+            ap.append(res[bottom - 1][i])
+        bottom -= 1
+
+        for i in range(bottom-1, top - 1, -1):
+            ap.append(res[i][left])
+        left += 1
+
+    print(ap)
 
 
 if __name__ == '__main__':
