@@ -13,5 +13,13 @@ def longestIncreasingSubsequence(lst):
     print(indexs)
 
 
+def lis(a):
+    l = [1] * len(a)
+    for i in range(1, len(1)):
+        subs = [l[j] for j in range(i) if a[j] < a[i]]
+        l[i] = 1 + max(subs, default=0)
+    return max(l, default=0)
+
+
 if __name__ == '__main__':
     longestIncreasingSubsequence("THis si fas")
