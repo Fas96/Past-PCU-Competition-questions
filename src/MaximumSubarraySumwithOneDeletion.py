@@ -1,6 +1,7 @@
 def MaximumSubarraySumwithOneDeletion(arr) -> int:
     mx = -1 * (10 ** 9)
     lmx = arr[0]
+    print(mx)
 
     for i in range(1,len(arr)):
         mx = max(arr[i], mx + lmx)
