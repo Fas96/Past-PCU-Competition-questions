@@ -1,5 +1,5 @@
 import queue
-
+#push and retrieve
 
 def createMaze():
     maze = []
@@ -31,6 +31,7 @@ def createMaze2():
 
 def printMaze(maze, path=""):
     for x, pos in enumerate(maze[0]):
+        # print(x,pos)
         if pos == "O":
             start = x
 
@@ -40,16 +41,14 @@ def printMaze(maze, path=""):
     for move in path:
         if move == "L":
             i -= 1
-
         elif move == "R":
             i += 1
-
         elif move == "U":
             j -= 1
-
         elif move == "D":
             j += 1
         pos.add((j, i))
+        print(pos)
 
     for j, row in enumerate(maze):
         for i, col in enumerate(row):
@@ -70,13 +69,10 @@ def valid(maze, moves):
     for move in moves:
         if move == "L":
             i -= 1
-
         elif move == "R":
             i += 1
-
         elif move == "U":
             j -= 1
-
         elif move == "D":
             j += 1
 
