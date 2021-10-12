@@ -3,7 +3,7 @@ def LargestrectangleinHistogram(arr):
     mx = -1 * 10 ** 10
     for i in range(len(arr)):
         for j in range(i, len(arr)):
-            print(arr[i:j + 1])
+
             H = min(arr[i:j + 1])
             W = j - i + 1
             mx = max(mx, H * W)
